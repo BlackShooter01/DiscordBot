@@ -14,8 +14,6 @@ import org.mapdb.HTreeMap;
 public class DiscordBot
 {
     public static void main(String[] args) throws InterruptedException {
-        //config.database();
-        //Discord bot
         JDA jda = JDABuilder.createDefault(config.getToken()).addEventListeners(new BotCommands()).build().awaitReady();
 
         Guild testServer = jda.getGuildById("598632356005543955");
@@ -35,6 +33,7 @@ public class DiscordBot
             phoenixServer.upsertCommand("database_save","zapisanie swojej wiadomości")
                     .addOption(OptionType.STRING,"message","content",true).queue();
             phoenixServer.upsertCommand("database_load","odczytanie swojej wiadomości").queue();
+            phoenixServer.upsertCommand("anomalia", "Opis przykładowej, losowej broni EGO.").queue();
         }
 
     }
