@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
+import org.json.JSONObject;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.HTreeMap;
@@ -14,6 +15,10 @@ import org.mapdb.HTreeMap;
 public class DiscordBot
 {
     public static void main(String[] args) throws InterruptedException {
+        //JSONfiles
+        JSONObject obj = new JSONObject();
+
+        //DiscordBot
         JDA jda = JDABuilder.createDefault(config.getToken()).addEventListeners(new BotCommands()).build().awaitReady();
 
         Guild testServer = jda.getGuildById("598632356005543955");
@@ -34,6 +39,7 @@ public class DiscordBot
                     .addOption(OptionType.STRING,"message","content",true).queue();
             phoenixServer.upsertCommand("database_load","odczytanie swojej wiadomości").queue();
             phoenixServer.upsertCommand("anomalia", "Opis przykładowej, losowej broni EGO.").queue();
+            phoenixServer.upsertCommand("check","Test").queue();
         }
 
     }

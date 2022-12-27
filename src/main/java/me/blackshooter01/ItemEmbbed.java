@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.entities.MessageEmbed;
 import java.awt.*;
 
 public class ItemEmbbed {
-    public static MessageEmbed ItemEmbbed(Abnormality item)
+    public static MessageEmbed WeaponEmbbed(Abnormality item)
     {
         EmbedBuilder eb = new EmbedBuilder();
         eb.setTitle(item.name);
@@ -21,7 +21,6 @@ public class ItemEmbbed {
             case "Aleph" -> eb.setColor(new Color(0xbb0000));
             default -> eb.setColor(Color.BLACK);
         }
-        eb.setDescription("Przykładowy opis broni EGO.");
         eb.addField("Typ",item.type,true);
         eb.addField("Rodzaj",item.type2,true);
         eb.addField("Opis",item.description,false);

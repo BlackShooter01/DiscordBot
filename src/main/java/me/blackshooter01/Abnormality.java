@@ -20,4 +20,14 @@ public abstract class Abnormality {
         this.attribute = "- W stanie spoczynku broń posiada mnożniki: Cięte";
         this.additional = "Da się wyczuć od niego wewnętrzne, nostalgiczne ciepło.";
     }
+    public void Abnormality(String name, String type, String type2, String rank, String description, String attribute, String additional)
+    {
+        this.name = name;
+        this.type = type;
+        this.type2 = type2;
+        this.rank = rank;
+        this.description = description;
+        this.attribute = attribute;
+        this.additional = additional;
+    }
 }

@@ -1,16 +1,15 @@
 package me.blackshooter01;
 
-import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.EmbedType;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
+import org.jetbrains.annotations.NotNull;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.HTreeMap;
 
-import java.awt.*;
+import java.util.ArrayList;
 
 public class BotCommands extends ListenerAdapter {
     @Override
@@ -49,9 +48,21 @@ public class BotCommands extends ListenerAdapter {
         else if(event.getName().equals("anomalia")) {
             event.deferReply().queue();
             Abnormality abnormality = new Item();
-            MessageEmbed eb = ItemEmbbed.ItemEmbbed(abnormality);
-
+            MessageEmbed eb = ItemEmbbed.WeaponEmbbed(abnormality);
             event.getHook().sendMessageEmbeds(eb).queue();
+        }
+        else if (event.getName().equals("check"))
+        {
+            event.deferReply().queue();
+            Parser parser = new Parser();
+            ArrayList<Abnormality> abnormality= parser.Parser(event.getMember().getIdLong());
+            if(abnormality==null) { event.getHook().sendMessage("```Brak EGO!```").queue(); }
+            else
+            {
+                abnormality.forEach(item -> event.getChannel().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(item)).queue());
+                event.getHook().sendMessage("```Lista EGO```").queue();
+            }
+
         }
     }
 }
