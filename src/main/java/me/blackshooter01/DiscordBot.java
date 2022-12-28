@@ -39,7 +39,10 @@ public class DiscordBot
                     .addOption(OptionType.STRING,"message","content",true).queue();
             phoenixServer.upsertCommand("database_load","odczytanie swojej wiadomości").queue();
             phoenixServer.upsertCommand("anomalia", "Opis przykładowej, losowej broni EGO.").queue();
-            phoenixServer.upsertCommand("check","Test").queue();
+            //phoenixServer.upsertCommand("check","Test").queue();
+            phoenixServer.upsertCommand("checkone","test2")
+                    .addOption(OptionType.STRING,"nazwa","nazwa EGO",true).queue();
+            phoenixServer.upsertCommand("listaego","Lista nazw Twoich EGO").queue();
         }
 
     }

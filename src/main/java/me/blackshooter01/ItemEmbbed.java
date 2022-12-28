@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ItemEmbbed {
     public static MessageEmbed WeaponEmbbed(Abnormality item)
@@ -28,6 +29,16 @@ public class ItemEmbbed {
         eb.addField("Opis",item.description,false);
         eb.addField("Właściwości",item.attribute,false);
         eb.addField("Dodatkowe informacje",item.additional,false);
+        return eb.build();
+    }
+    public static MessageEmbed ListaEGOEmbbed(ArrayList<Abnormality> lista)
+    {
+        EmbedBuilder eb = new EmbedBuilder();
+        String inside = "";
+        for (Abnormality item : lista) {
+            inside=inside+item.name+"\n";
+        }
+        eb.addField("Lista EGO", inside ,false);
         return eb.build();
     }
 }

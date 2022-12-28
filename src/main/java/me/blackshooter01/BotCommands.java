@@ -53,7 +53,7 @@ public class BotCommands extends ListenerAdapter {
         }
         else if (event.getName().equals("check"))
         {
-            event.deferReply().queue();
+            event.deferReply().setEphemeral(true).queue();
             Parser parser = new Parser();
             ArrayList<Abnormality> abnormality= parser.Parser(event.getMember().getIdLong());
             if(abnormality==null) { event.getHook().sendMessage("```Brak EGO!```").queue(); }
@@ -62,7 +62,34 @@ public class BotCommands extends ListenerAdapter {
                 abnormality.forEach(item -> event.getChannel().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(item)).queue());
                 event.getHook().sendMessage("```Lista EGO```").queue();
             }
+        }
+        else if (event.getName().equals("checkone"))
+        {
+            event.deferReply().setEphemeral(true).queue();
+            OptionMapping option = event.getOption("nazwa");
+            Parser parser = new Parser();
+            Abnormality abnormality = parser.Parser(event.getMember().getIdLong(),option.getAsString());
+            System.out.println("Wyszedłem z funkcji!");
+            if (abnormality == null ){
+                System.out.println("Abnormality jest nullem!");
+                event.getHook().setEphemeral(true).sendMessage("Nie istnieje/posiadasz dane EGO.").queue();
+            }
+            else {
+                System.out.println("Abnormality nie jest nullem!");
+                event.getHook().setEphemeral(true).sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(abnormality)).queue();
+            }
 
+        }
+        else if (event.getName().equals("listaego"))
+        {
+            event.deferReply().setEphemeral(true).queue();
+            Parser parser = new Parser ();
+            ArrayList<Abnormality> abnormality = parser.Parser(event.getMember().getIdLong());
+            if(abnormality==null) { event.getHook().sendMessage("```Brak EGO!```").queue(); }
+            else
+            {
+                event.getHook().sendMessageEmbeds(ItemEmbbed.ListaEGOEmbbed(abnormality)).queue();
+            }
         }
     }
 }
