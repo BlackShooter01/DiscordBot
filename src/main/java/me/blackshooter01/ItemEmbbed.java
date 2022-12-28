@@ -24,8 +24,8 @@ public class ItemEmbbed {
         }
         eb.addField("Typ",item.type,true);
         eb.addField("Rodzaj",item.type2,true);
+        eb.addField("Stopień",item.rank, true);
         eb.addField("Opis",item.description,false);
-        eb.addField("Stopień",item.rank, false);
         eb.addField("Opis",item.description,false);
         eb.addField("Właściwości",item.attribute,false);
         eb.addField("Dodatkowe informacje",item.additional,false);
@@ -36,8 +36,10 @@ public class ItemEmbbed {
     {
         EmbedBuilder eb = new EmbedBuilder();
         String inside = "";
+        Integer indeks=1;
         for (Abnormality item : lista) {
-            inside=inside+item.name+"\n";
+            inside=inside+indeks+". "+item.name+"\n";
+            indeks++;
         }
         eb.addField("Lista EGO", inside ,false);
         return eb.build();

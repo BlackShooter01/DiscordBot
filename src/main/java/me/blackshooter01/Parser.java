@@ -34,14 +34,24 @@ public class Parser {
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
-        if (abnormality != null) {
-            System.out.println("W Parse abno nie jest nullem");
-            return abnormality;
+        return abnormality;
+    }
+    public Abnormality Parser(long id, Integer indeks)
+    {
+        JSONParser jsonParser = new JSONParser();
+        Abnormality abnormality = null;
+        try (FileReader reader = new FileReader(config.anomalie+id+".json"))
+        {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+
+            JSONArray abnormalityList = (JSONArray) obj;
+            if(abnormalityList.size()>indeks) { abnormality = parseAbnormalityObject((JSONObject) abnormalityList.get(indeks)); }
+            //abnormalityList.forEach(emp -> parseAbnormalityObject((JSONObject) emp,id));
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
         }
-        else {
-            System.out.println("W Parse abno jest nullem");
-            return null;
-        }
+        return abnormality;
     }
     public ArrayList<Abnormality> Parser(long id)
     {

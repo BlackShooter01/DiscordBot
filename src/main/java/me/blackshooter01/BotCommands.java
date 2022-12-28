@@ -51,45 +51,36 @@ public class BotCommands extends ListenerAdapter {
             MessageEmbed eb = ItemEmbbed.WeaponEmbbed(abnormality);
             event.getHook().sendMessageEmbeds(eb).queue();
         }
-        else if (event.getName().equals("check"))
-        {
-            event.deferReply().setEphemeral(true).queue();
-            Parser parser = new Parser();
-            ArrayList<Abnormality> abnormality= parser.Parser(event.getMember().getIdLong());
-            if(abnormality==null) { event.getHook().sendMessage("```Brak EGO!```").queue(); }
-            else
-            {
-                abnormality.forEach(item -> event.getChannel().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(item)).queue());
-                event.getHook().sendMessage("```Lista EGO```").queue();
-            }
-        }
-        else if (event.getName().equals("checkone"))
+        else if (event.getName().equals("zobaczego"))
         {
             event.deferReply().setEphemeral(true).queue();
             OptionMapping option = event.getOption("nazwa");
             Parser parser = new Parser();
-            Abnormality abnormality = parser.Parser(event.getMember().getIdLong(),option.getAsString());
-            System.out.println("Wyszedłem z funkcji!");
-            if (abnormality == null ){
-                System.out.println("Abnormality jest nullem!");
-                event.getHook().setEphemeral(true).sendMessage("Nie istnieje/posiadasz dane EGO.").queue();
+            Abnormality abnormality;
+            try
+            {
+                System.out.println("Komenda ZobaczEGO użyta przez: "+event.getMember().getUser()+" Indeks EGO: "+option.getAsInt());
+                abnormality = parser.Parser(event.getMember().getIdLong(),option.getAsInt()-1);
+
             }
-            else {
-                System.out.println("Abnormality nie jest nullem!");
-                event.getHook().setEphemeral(true).sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(abnormality)).queue();
+            catch(NumberFormatException e)
+            {
+                System.out.println("To nie jest liczba! Próbuję uznać to za nazwę!");
+                System.out.println("Komenda ZobaczEGO użyta przez: "+event.getMember().getUser()+" Nazwa EGO: "+option.getAsString());
+                abnormality = parser.Parser(event.getMember().getIdLong(),option.getAsString());
             }
+            if (abnormality == null ){ event.getHook().sendMessage("Nie istnieje/posiadasz danego EGO.").queue(); }
+            else { event.getHook().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(abnormality)).queue(); }
 
         }
         else if (event.getName().equals("listaego"))
         {
             event.deferReply().setEphemeral(true).queue();
+            System.out.println("Komenda ListaEGO użyta przez: "+event.getMember().getUser());
             Parser parser = new Parser ();
             ArrayList<Abnormality> abnormality = parser.Parser(event.getMember().getIdLong());
             if(abnormality==null) { event.getHook().sendMessage("```Brak EGO!```").queue(); }
-            else
-            {
-                event.getHook().sendMessageEmbeds(ItemEmbbed.ListaEGOEmbbed(abnormality)).queue();
-            }
+            else { event.getHook().sendMessageEmbeds(ItemEmbbed.ListaEGOEmbbed(abnormality)).queue(); }
         }
     }
 }
