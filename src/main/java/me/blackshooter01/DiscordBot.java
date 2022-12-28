@@ -42,6 +42,9 @@ public class DiscordBot
             phoenixServer.upsertCommand("zobaczego","Opis wskazanego EGO")
                     .addOption(OptionType.STRING,"nazwa","nazwa EGO",true).queue();
             phoenixServer.upsertCommand("listaego","Lista posiadanych EGO").queue();
+            phoenixServer.upsertCommand("zobaczability","Opis wskazanej umiejętności")
+                    .addOption(OptionType.STRING,"nazwa","nazwa umiejętności",true).queue();
+            phoenixServer.upsertCommand("listaability","Lista posiadanych umiejętności").queue();
             phoenixServer.upsertCommand("tablicaego","tablica EGO z przyciskami").queue();
         }
 

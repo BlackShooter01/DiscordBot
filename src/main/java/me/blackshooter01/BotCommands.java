@@ -1,16 +1,11 @@
 package me.blackshooter01;
 
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
-import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
-import net.dv8tion.jda.api.interactions.components.buttons.ButtonInteraction;
-import net.dv8tion.jda.internal.interactions.component.ButtonInteractionImpl;
-import org.jetbrains.annotations.NotNull;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.HTreeMap;
@@ -66,14 +61,14 @@ public class BotCommands extends ListenerAdapter {
             try
             {
                 System.out.println("Komenda ZobaczEGO użyta przez "+event.getMember().getUser()+" Indeks EGO: "+option.getAsInt());
-                abnormality = parser.Parser(event.getMember().getIdLong(),option.getAsInt()-1);
+                abnormality = parser.ItemParser(event.getMember().getIdLong(),option.getAsInt()-1);
 
             }
             catch(NumberFormatException e)
             {
                 System.out.println("To nie jest liczba! Próbuję uznać to za nazwę!");
                 System.out.println("Komenda ZobaczEGO użyta przez "+event.getMember().getUser()+" Nazwa EGO: "+option.getAsString());
-                abnormality = parser.Parser(event.getMember().getIdLong(),option.getAsString());
+                abnormality = parser.ItemParser(event.getMember().getIdLong(),option.getAsString());
             }
             if (abnormality == null ){ event.getHook().sendMessage("Nie istnieje/posiadasz danego EGO.").queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(abnormality)).queue(); }
@@ -84,7 +79,7 @@ public class BotCommands extends ListenerAdapter {
             event.deferReply().setEphemeral(true).queue();
             System.out.println("Komenda ListaEGO użyta przez "+event.getMember().getUser());
             Parser parser = new Parser ();
-            ArrayList<Abnormality> abnormality = parser.Parser(event.getMember().getIdLong());
+            ArrayList<Abnormality> abnormality = parser.ItemParser(event.getMember().getIdLong());
             if(abnormality==null) { event.getHook().sendMessage("```Brak EGO!```").queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.ListaEGOEmbbed(abnormality)).queue(); }
         }
@@ -96,7 +91,7 @@ public class BotCommands extends ListenerAdapter {
             Abnormality abnormality=null;
             try
             {
-                abnormality = parser.Parser(event.getMember().getIdLong(),0);
+                abnormality = parser.ItemParser(event.getMember().getIdLong(),0);
             }
             catch(Exception e)
             {
@@ -115,7 +110,36 @@ public class BotCommands extends ListenerAdapter {
             {
                 event.getHook().sendMessage("Coś poszło nie tak! Brak EGO?!").queue();
             }
+        }
+        else if (event.getName().equals("zobaczability"))
+        {
+            event.deferReply().setEphemeral(true).queue();
+            OptionMapping option = event.getOption("nazwa");
+            Parser parser = new Parser();
+            Abnormality abnormality;
+            try
+            {
+                System.out.println("Komenda ZobaczAbility użyta przez "+event.getMember().getUser()+" Indeks Ability: "+option.getAsInt());
+                abnormality = parser.AbilityParser(event.getMember().getIdLong(),option.getAsInt()-1);
 
+            }
+            catch(NumberFormatException e)
+            {
+                System.out.println("To nie jest liczba! Próbuję uznać to za nazwę!");
+                System.out.println("Komenda ZobaczAbility użyta przez "+event.getMember().getUser()+" Nazwa Ability: "+option.getAsString());
+                abnormality = parser.AbilityParser(event.getMember().getIdLong(),option.getAsString());
+            }
+            if (abnormality == null ){ event.getHook().sendMessage("Nie istnieje/posiadasz danej umiejętności.").queue(); }
+            else { event.getHook().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(abnormality)).queue(); }
+        }
+        else if (event.getName().equals("listaability"))
+        {
+            event.deferReply().setEphemeral(true).queue();
+            System.out.println("Komenda ListaAbility użyta przez "+event.getMember().getUser());
+            Parser parser = new Parser ();
+            ArrayList<Abnormality> abnormality = parser.AbilityParser(event.getMember().getIdLong());
+            if(abnormality==null) { event.getHook().sendMessage("```Brak Umiejętności!```").queue(); }
+            else { event.getHook().sendMessageEmbeds(ItemEmbbed.ListaEGOEmbbed(abnormality)).queue(); }
         }
     }
     @Override
@@ -136,7 +160,7 @@ public class BotCommands extends ListenerAdapter {
             Abnormality abnormality = null;
             try
             {
-                abnormality = parser.Parser(event.getMember().getIdLong(),indeks-1);
+                abnormality = parser.ItemParser(event.getMember().getIdLong(),indeks-1);
             }
             catch(Exception e)
             {
@@ -171,7 +195,7 @@ public class BotCommands extends ListenerAdapter {
             Parser parser = new Parser();
             Abnormality abnormality = null;
             try{
-                abnormality = parser.Parser(event.getMember().getIdLong(),indeks-1);
+                abnormality = parser.ItemParser(event.getMember().getIdLong(),indeks-1);
             }
             catch (Exception e)
             {
