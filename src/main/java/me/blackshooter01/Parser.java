@@ -27,13 +27,12 @@ public class Parser {
                     break;
                 }
             }
-            //abnormalityList.forEach(emp -> parseAbnormalityObject((JSONObject) emp,id));
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
         return abnormality;
     }
-    public Abnormality ItemParser(long id, Integer indeks)
+    public Abnormality ItemParser(long id, int indeks)
     {
         JSONParser jsonParser = new JSONParser();
         Abnormality abnormality = null;
@@ -113,7 +112,7 @@ public class Parser {
         }
         return abnormality;
     }
-    public Abnormality AbilityParser(long id, Integer indeks)
+    public Abnormality AbilityParser(long id, int indeks)
     {
         JSONParser jsonParser = new JSONParser();
         Abnormality abnormality = null;

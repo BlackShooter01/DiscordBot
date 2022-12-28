@@ -1,10 +1,12 @@
 package me.blackshooter01;
 
-import java.awt.*;
+import org.json.simple.JSONObject;
+
 import java.util.Random;
 
 public abstract class Abnormality {
     public String name,type,type2,rank,description,attribute,additional,extra;
+    protected JSONObject object;
     public Abnormality()
     {
         String[] list = {"Sword", "Axe", "Chainsword", "Bow", "Hat", "Dagger", "Scythe", "Ball", "Vortix"};
@@ -31,5 +33,37 @@ public abstract class Abnormality {
         this.attribute = attribute;
         this.additional = additional;
         this.extra = extra;
+    }
+    public String getName()
+    {
+        return (String) this.object.get("Nazwa");
+    }
+    public String getType()
+    {
+        return (String) this.object.get("Typ");
+    }
+    public String getType2()
+    {
+        return (String) this.object.get("Rodzaj");
+    }
+    public String getRank()
+    {
+        return (String) this.object.get("Stopień");
+    }
+    public String getDescription()
+    {
+        return (String) this.object.get("Opis");
+    }
+    public String getAttribute()
+    {
+        return (String) this.object.get("Właściwości");
+    }
+    public String getAdditional()
+    {
+        return (String) this.object.get("Inne informacje");
+    }
+    public String getExtra()
+    {
+        return (String) this.object.get("Dodatkowe");
     }
 }
