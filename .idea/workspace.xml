@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="445a43eb-12dc-4e1e-b8a2-280866e07200" name="Changes" comment="Początki pliku JSON i sprawdzania właściciela.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="445a43eb-12dc-4e1e-b8a2-280866e07200" name="Changes" comment="Commit przed zmianą segregacji przedmiotów.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/BotCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/BotCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/DiscordBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/DiscordBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Abnormality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Abnormality.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/ItemEmbbed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/ItemEmbbed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Parser.java" afterDir="false" />
     </list>
@@ -110,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672144633161</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Commit przed zmianą segregacji przedmiotów.">
+      <created>1672212709123</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672212709123</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,7 +133,8 @@
     <MESSAGE value="Podstawa" />
     <MESSAGE value="Początki embbeded wiadomości" />
     <MESSAGE value="Początki pliku JSON i sprawdzania właściciela." />
-    <option name="LAST_COMMIT_MESSAGE" value="Początki pliku JSON i sprawdzania właściciela." />
+    <MESSAGE value="Commit przed zmianą segregacji przedmiotów." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit przed zmianą segregacji przedmiotów." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CreatorOfUniverse$DiscordBot.ic" NAME="DiscordBot Coverage Results" MODIFIED="1672137455390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

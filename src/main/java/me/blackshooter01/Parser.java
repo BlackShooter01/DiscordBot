@@ -8,47 +8,14 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.ArrayList;
 
 public class Parser {
-    public void Parser()
-    {
-        JSONParser jsonParser = new JSONParser();
-
-        try (FileReader reader = new FileReader(config.anomalie))
-        {
-            //Read JSON file
-            Object obj = jsonParser.parse(reader);
-
-            JSONArray abnormalityList = (JSONArray) obj;
-
-            //Iterate over employee array
-            abnormalityList.forEach(emp -> parseAbnormalityObject((JSONObject) emp) );
-
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private static void parseAbnormalityObject(JSONObject abnormality)
-    {
-        //Get employee object within list
-        JSONObject abnormalityObject = (JSONObject) abnormality.get("item");
-
-        //Get employee first name
-        String firstName = (String) abnormalityObject.get("Właściciel");
-
-        //Get employee last name
-        String lastName = (String) abnormalityObject.get("Nazwa");
-
-        //Get employee website name
-        String website = (String) abnormalityObject.get("Opis");
-    }
     public Abnormality Parser(long id, String name)
     {
         JSONParser jsonParser = new JSONParser();
         Abnormality abnormality = null;
-        try (FileReader reader = new FileReader(config.anomalie))
+        try (FileReader reader = new FileReader(config.anomalie+id+".json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
@@ -57,8 +24,8 @@ public class Parser {
 
             //Iterate over item array
             for (Object o : abnormalityList) {
-                Abnormality temp = parseAbnormalityObject((JSONObject) o, id);
-                if (temp != null && temp.name.equals(name)) {
+                Abnormality temp = parseAbnormalityObject((JSONObject) o);
+                if (temp.name.equals(name)) {
                     abnormality = temp;
                     break;
                 }
@@ -80,7 +47,7 @@ public class Parser {
     {
         JSONParser jsonParser = new JSONParser();
         ArrayList<Abnormality> lista = new ArrayList<>();
-        try (FileReader reader = new FileReader(config.anomalie))
+        try (FileReader reader = new FileReader(config.anomalie+id+".json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
@@ -89,10 +56,8 @@ public class Parser {
 
             //Iterate over item array
             for (Object o : abnormalityList) {
-                Abnormality temp = parseAbnormalityObject((JSONObject) o, id);
-                if (temp != null) {
-                    lista.add(temp);
-                }
+                Abnormality temp = parseAbnormalityObject((JSONObject) o);
+                lista.add(temp);
             }
             //abnormalityList.forEach(emp -> parseAbnormalityObject((JSONObject) emp,id));
 
@@ -107,32 +72,21 @@ public class Parser {
             return lista;
         }
     }
-    private Abnormality parseAbnormalityObject(JSONObject abnormality, long id)
+    private Abnormality parseAbnormalityObject(JSONObject abnormality)
     {
         //Get employee object within list
-        System.out.println("Otrzymałem obiekt!");
         JSONObject abnormalityObject = (JSONObject) abnormality.get("item");
 
-        String owner = (String) abnormalityObject.get("Właściciel");
-        if(owner.equals(Long.toString(id)))
-        {
-            String nazwa = (String) abnormalityObject.get("Nazwa");
-            String typ = (String) abnormalityObject.get("Typ");
-            String rodzaj = (String) abnormalityObject.get("Rodzaj");
-            String rank = (String) abnormalityObject.get("Stopień");
-            String opis = (String) abnormalityObject.get("Opis");
-            String atrybut = (String) abnormalityObject.get("Właściwości");
-            String dodatkowe = (String) abnormalityObject.get("Inne informacje");
-            Item item = new Item();
-            System.out.println("W parserze stworzyl sie item o wlasciwosciach:"+nazwa+" "+typ+" "+rodzaj+" "+rank);
-            item.Abnormality(nazwa,typ,rodzaj,rank,opis,atrybut,dodatkowe);
-            return item;
-        }
-        return null;
-        //Get employee last name
-        //String lastName = (String) abnormalityObject.get("Nazwa");
-
-        //Get employee website name
-        //String website = (String) abnormalityObject.get("Opis");
+        String nazwa = (String) abnormalityObject.get("Nazwa");
+        String typ = (String) abnormalityObject.get("Typ");
+        String rodzaj = (String) abnormalityObject.get("Rodzaj");
+        String rank = (String) abnormalityObject.get("Stopień");
+        String opis = (String) abnormalityObject.get("Opis");
+        String atrybut = (String) abnormalityObject.get("Właściwości");
+        String dodatkowe = (String) abnormalityObject.get("Inne informacje");
+        String extra = (String) abnormalityObject.get("Dodatkowe");
+        Abnormality item = new Item();
+        item.Abnormality(nazwa,typ,rodzaj,rank,opis,atrybut,dodatkowe,extra);
+        return item;
     }
 }

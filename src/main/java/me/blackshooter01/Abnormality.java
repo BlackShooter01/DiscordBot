@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Random;
 
 public abstract class Abnormality {
-    public String name,type,type2,rank,description,attribute,additional;
+    public String name,type,type2,rank,description,attribute,additional,extra;
     public Abnormality()
     {
         String[] list = {"Sword", "Axe", "Chainsword", "Bow", "Hat", "Dagger", "Scythe", "Ball", "Vortix"};
@@ -19,8 +19,9 @@ public abstract class Abnormality {
         this.description = "Jest to broń przypominająca "+choose+".";
         this.attribute = "- W stanie spoczynku broń posiada mnożniki: Cięte";
         this.additional = "Da się wyczuć od niego wewnętrzne, nostalgiczne ciepło.";
+        this.extra=null;
     }
-    public void Abnormality(String name, String type, String type2, String rank, String description, String attribute, String additional)
+    public void Abnormality(String name, String type, String type2, String rank, String description, String attribute, String additional, String extra)
     {
         this.name = name;
         this.type = type;
@@ -29,5 +30,6 @@ public abstract class Abnormality {
         this.description = description;
         this.attribute = attribute;
         this.additional = additional;
+        this.extra = extra;
     }
 }
