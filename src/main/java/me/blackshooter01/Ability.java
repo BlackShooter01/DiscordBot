@@ -1,8 +1,10 @@
 package me.blackshooter01;
 
-public class Ability extends Abnormality{
-    public Ability()
-    {
+import org.json.simple.JSONObject;
 
+public class Ability extends Abnormality{
+    public Ability(JSONObject object)
+    {
+        this.setObject(object);
     }
 }

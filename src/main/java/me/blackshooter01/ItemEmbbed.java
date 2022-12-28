@@ -10,8 +10,8 @@ public class ItemEmbbed {
     public static MessageEmbed WeaponEmbbed(Abnormality item)
     {
         EmbedBuilder eb = new EmbedBuilder();
-        eb.setTitle(item.name);
-        switch (item.rank) {
+        eb.setTitle(item.getName());
+        switch (item.getRank()) {
             case "Daleth" -> eb.setColor(new Color(0x804000));
             case "Zayin" -> eb.setColor(new Color(0x00b000));
             case "Teth" -> eb.setColor(new Color(0x2020b0));
@@ -22,23 +22,22 @@ public class ItemEmbbed {
             case "Aleph" -> eb.setColor(new Color(0xbb0000));
             default -> eb.setColor(Color.BLACK);
         }
-        eb.addField("Typ",item.type,true);
-        eb.addField("Rodzaj",item.type2,true);
-        eb.addField("Stopień",item.rank, true);
-        eb.addField("Opis",item.description,false);
-        eb.addField("Opis",item.description,false);
-        eb.addField("Właściwości",item.attribute,false);
-        eb.addField("Dodatkowe informacje",item.additional,false);
-        if(item.extra!=null){eb.addField("Dodatkowe",item.extra,false);}
+        eb.addField("Typ",item.getType(),true);
+        eb.addField("Rodzaj",item.getType2(),true);
+        eb.addField("Stopień",item.getRank(), true);
+        eb.addField("Opis",item.getDescription(),false);
+        eb.addField("Właściwości",item.getAttribute(),false);
+        eb.addField("Dodatkowe informacje",item.getAdditional(),false);
+        if(item.getExtra()!=null){eb.addField("Dodatkowe",item.getExtra(),false);}
         return eb.build();
     }
     public static MessageEmbed ListaEGOEmbbed(ArrayList<Abnormality> lista)
     {
         EmbedBuilder eb = new EmbedBuilder();
         String inside = "";
-        Integer indeks=1;
+        int indeks=1;
         for (Abnormality item : lista) {
-            inside=inside+indeks+". "+item.name+"\n";
+            inside=inside+indeks+". "+item.getName()+"\n";
             indeks++;
         }
         eb.addField("Lista EGO", inside ,false);
@@ -47,8 +46,7 @@ public class ItemEmbbed {
     public static MessageEmbed FailEGO()
     {
         EmbedBuilder eb = new EmbedBuilder();
-        eb.setTitle("Nie odnaleziono EGO!");
-        eb.addField("Możliwy powód:","Wyjście poza zakres swojej listy EGO.",false);
+        eb.setTitle("Nie odnaleziono podanego EGO!");
         return eb.build();
     }
 }

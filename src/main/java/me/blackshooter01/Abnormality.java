@@ -34,6 +34,10 @@ public abstract class Abnormality {
         this.additional = additional;
         this.extra = extra;
     }
+    public void setObject(JSONObject object)
+    {
+        this.object=object;
+    }
     public String getName()
     {
         return (String) this.object.get("Nazwa");

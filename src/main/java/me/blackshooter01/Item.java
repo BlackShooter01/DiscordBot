@@ -9,7 +9,7 @@ public class Item extends Abnormality{
     }
     public Item(JSONObject object)
     {
-        this.object=object;
+        this.setObject(object);
     }
 
 }

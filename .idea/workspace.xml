@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="445a43eb-12dc-4e1e-b8a2-280866e07200" name="Changes" comment="Zdoublowanie komend, aby mieć możliwość ogarniania umiejętności podobnie jak EGO.">
+    <list default="true" id="445a43eb-12dc-4e1e-b8a2-280866e07200" name="Changes" comment="Punkt przed usprawnianiem kodu.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Ability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Ability.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Abnormality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Abnormality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/BotCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/BotCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/ItemEmbbed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/ItemEmbbed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672261076739</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Punkt przed usprawnianiem kodu.">
+      <created>1672265142488</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672265142488</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,7 +177,8 @@
     <MESSAGE value="Umożliwienie interaktowanie z listą EGO za pomocą liczb." />
     <MESSAGE value="Przeglądanie listy EGO za pomocą przycisków w pojedynczej wiadomości.&#10;Początek wprowadzania zdolności." />
     <MESSAGE value="Zdoublowanie komend, aby mieć możliwość ogarniania umiejętności podobnie jak EGO." />
-    <option name="LAST_COMMIT_MESSAGE" value="Zdoublowanie komend, aby mieć możliwość ogarniania umiejętności podobnie jak EGO." />
+    <MESSAGE value="Punkt przed usprawnianiem kodu." />
+    <option name="LAST_COMMIT_MESSAGE" value="Punkt przed usprawnianiem kodu." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CreatorOfUniverse$DiscordBot.ic" NAME="DiscordBot Coverage Results" MODIFIED="1672137455390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

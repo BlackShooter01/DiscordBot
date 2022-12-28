@@ -56,21 +56,20 @@ public class BotCommands extends ListenerAdapter {
         {
             event.deferReply().setEphemeral(true).queue();
             OptionMapping option = event.getOption("nazwa");
-            Parser parser = new Parser();
             Abnormality abnormality;
             try
             {
                 System.out.println("Komenda ZobaczEGO użyta przez "+event.getMember().getUser()+" Indeks EGO: "+option.getAsInt());
-                abnormality = parser.ItemParser(event.getMember().getIdLong(),option.getAsInt()-1);
+                abnormality = Parser.ItemParser(event.getMember().getIdLong(),option.getAsInt()-1);
 
             }
             catch(NumberFormatException e)
             {
                 System.out.println("To nie jest liczba! Próbuję uznać to za nazwę!");
                 System.out.println("Komenda ZobaczEGO użyta przez "+event.getMember().getUser()+" Nazwa EGO: "+option.getAsString());
-                abnormality = parser.ItemParser(event.getMember().getIdLong(),option.getAsString());
+                abnormality = Parser.ItemParser(event.getMember().getIdLong(),option.getAsString());
             }
-            if (abnormality == null ){ event.getHook().sendMessage("Nie istnieje/posiadasz danego EGO.").queue(); }
+            if (abnormality == null ){ event.getHook().sendMessageEmbeds(ItemEmbbed.FailEGO()).queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(abnormality)).queue(); }
 
         }
@@ -78,8 +77,7 @@ public class BotCommands extends ListenerAdapter {
         {
             event.deferReply().setEphemeral(true).queue();
             System.out.println("Komenda ListaEGO użyta przez "+event.getMember().getUser());
-            Parser parser = new Parser ();
-            ArrayList<Abnormality> abnormality = parser.ItemParser(event.getMember().getIdLong());
+            ArrayList<Abnormality> abnormality = Parser.ItemParser(event.getMember().getIdLong());
             if(abnormality==null) { event.getHook().sendMessage("```Brak EGO!```").queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.ListaEGOEmbbed(abnormality)).queue(); }
         }
@@ -87,11 +85,10 @@ public class BotCommands extends ListenerAdapter {
         {
             event.deferReply(true).queue();
             System.out.println("Komenda ListaEGO użyta przez "+event.getMember().getUser());
-            Parser parser = new Parser ();
             Abnormality abnormality=null;
             try
             {
-                abnormality = parser.ItemParser(event.getMember().getIdLong(),0);
+                abnormality = Parser.ItemParser(event.getMember().getIdLong(),0);
             }
             catch(Exception e)
             {
@@ -115,19 +112,18 @@ public class BotCommands extends ListenerAdapter {
         {
             event.deferReply().setEphemeral(true).queue();
             OptionMapping option = event.getOption("nazwa");
-            Parser parser = new Parser();
             Abnormality abnormality;
             try
             {
                 System.out.println("Komenda ZobaczAbility użyta przez "+event.getMember().getUser()+" Indeks Ability: "+option.getAsInt());
-                abnormality = parser.AbilityParser(event.getMember().getIdLong(),option.getAsInt()-1);
+                abnormality = Parser.AbilityParser(event.getMember().getIdLong(),option.getAsInt()-1);
 
             }
             catch(NumberFormatException e)
             {
                 System.out.println("To nie jest liczba! Próbuję uznać to za nazwę!");
                 System.out.println("Komenda ZobaczAbility użyta przez "+event.getMember().getUser()+" Nazwa Ability: "+option.getAsString());
-                abnormality = parser.AbilityParser(event.getMember().getIdLong(),option.getAsString());
+                abnormality = Parser.AbilityParser(event.getMember().getIdLong(),option.getAsString());
             }
             if (abnormality == null ){ event.getHook().sendMessage("Nie istnieje/posiadasz danej umiejętności.").queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(abnormality)).queue(); }
@@ -136,8 +132,7 @@ public class BotCommands extends ListenerAdapter {
         {
             event.deferReply().setEphemeral(true).queue();
             System.out.println("Komenda ListaAbility użyta przez "+event.getMember().getUser());
-            Parser parser = new Parser ();
-            ArrayList<Abnormality> abnormality = parser.AbilityParser(event.getMember().getIdLong());
+            ArrayList<Abnormality> abnormality = Parser.AbilityParser(event.getMember().getIdLong());
             if(abnormality==null) { event.getHook().sendMessage("```Brak Umiejętności!```").queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.ListaEGOEmbbed(abnormality)).queue(); }
         }
@@ -153,14 +148,11 @@ public class BotCommands extends ListenerAdapter {
         {
             event.deferEdit().queue();
             int indeks = Integer.parseInt(event.getMessage().getButtons().get(1).getLabel())-1;
-            System.out.println("W lewo!");
-            System.out.println(indeks);
 
-            Parser parser = new Parser();
             Abnormality abnormality = null;
             try
             {
-                abnormality = parser.ItemParser(event.getMember().getIdLong(),indeks-1);
+                abnormality = Parser.ItemParser(event.getMember().getIdLong(),indeks-1);
             }
             catch(Exception e)
             {
@@ -189,13 +181,10 @@ public class BotCommands extends ListenerAdapter {
         {
             event.deferEdit().queue();
             int indeks = Integer.parseInt(event.getMessage().getButtons().get(1).getLabel())+1;
-            System.out.println("W prawo!");
-            System.out.println(indeks);
 
-            Parser parser = new Parser();
             Abnormality abnormality = null;
             try{
-                abnormality = parser.ItemParser(event.getMember().getIdLong(),indeks-1);
+                abnormality = Parser.ItemParser(event.getMember().getIdLong(),indeks-1);
             }
             catch (Exception e)
             {
