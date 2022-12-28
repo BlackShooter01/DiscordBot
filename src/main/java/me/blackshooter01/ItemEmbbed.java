@@ -44,4 +44,11 @@ public class ItemEmbbed {
         eb.addField("Lista EGO", inside ,false);
         return eb.build();
     }
+    public static MessageEmbed FailEGO()
+    {
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setTitle("Nie odnaleziono EGO!");
+        eb.addField("Możliwy powód:","Wyjście poza zakres swojej listy EGO.",false);
+        return eb.build();
+    }
 }
