@@ -19,6 +19,7 @@ public class BotCommands extends ListenerAdapter {
         if(event.getName().equals("ping")){
             event.reply("pong!").queue();
         }
+
         else if (event.getName().equals("send")) {
             OptionMapping option = event.getOption("message");
             if(option == null)
@@ -30,6 +31,7 @@ public class BotCommands extends ListenerAdapter {
                 event.getHook().sendMessage(option.getAsString()).queue();
             }
         }
+
         else if(event.getName().equals("database_save")) {
             event.deferReply().queue();
             DB db = DBMaker.fileDB(config.fileDB).make();
@@ -38,6 +40,7 @@ public class BotCommands extends ListenerAdapter {
             db.close();
             event.getHook().sendMessage("Wiadomość zapisana!").queue();
         }
+
         else if(event.getName().equals("database_load")) {
             event.deferReply().queue();
             DB db = DBMaker.fileDB(config.fileDB).make();
@@ -46,12 +49,14 @@ public class BotCommands extends ListenerAdapter {
             event.getHook().sendMessage("Twoja wiadomość to: "+key).queue();
             db.close();
         }
+
         else if(event.getName().equals("anomalia")) {
             event.deferReply().queue();
             Abnormality abnormality = new Item();
             MessageEmbed eb = ItemEmbbed.WeaponEmbbed(abnormality);
             event.getHook().sendMessageEmbeds(eb).addActionRow(Button.secondary("anomalia_reset", "Reset")).queue();
         }
+
         else if (event.getName().equals("zobaczego"))
         {
             event.deferReply().setEphemeral(true).queue();
@@ -71,8 +76,8 @@ public class BotCommands extends ListenerAdapter {
             }
             if (abnormality == null ){ event.getHook().sendMessageEmbeds(ItemEmbbed.FailEGO()).queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(abnormality)).queue(); }
-
         }
+
         else if (event.getName().equals("listaego"))
         {
             event.deferReply().setEphemeral(true).queue();
@@ -81,6 +86,7 @@ public class BotCommands extends ListenerAdapter {
             if(abnormality==null) { event.getHook().sendMessage("```Brak EGO!```").queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.ListaEGOEmbbed(abnormality)).queue(); }
         }
+
         else if (event.getName().equals("tablicaego"))
         {
             event.deferReply(true).queue();
@@ -108,6 +114,7 @@ public class BotCommands extends ListenerAdapter {
                 event.getHook().sendMessage("Coś poszło nie tak! Brak EGO?!").queue();
             }
         }
+
         else if (event.getName().equals("zobaczability"))
         {
             event.deferReply().setEphemeral(true).queue();
@@ -128,6 +135,7 @@ public class BotCommands extends ListenerAdapter {
             if (abnormality == null ){ event.getHook().sendMessage("Nie istnieje/posiadasz danej umiejętności.").queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.WeaponEmbbed(abnormality)).queue(); }
         }
+
         else if (event.getName().equals("listaability"))
         {
             event.deferReply().setEphemeral(true).queue();

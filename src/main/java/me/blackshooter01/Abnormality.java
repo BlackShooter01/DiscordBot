@@ -1,6 +1,8 @@
 package me.blackshooter01;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.util.Random;
 
@@ -10,29 +12,29 @@ public abstract class Abnormality {
     public Abnormality()
     {
         String[] list = {"Sword", "Axe", "Chainsword", "Bow", "Hat", "Dagger", "Scythe", "Ball", "Vortix"};
-        String[] list2 = {"Daleth","Zayin","Teth","Kaph","He","Waw","Qoph","Aleph" };
-        Random r1= new Random(),r2 = new Random();
-        String choose = list[r1.nextInt(list.length)];
-        String choose2=list2[r2.nextInt(list2.length)];
-        this.name = "Cinder's "+choose;
-        this.type = "Weapon EGO";
-        this.type2 = choose;
-        this.rank = choose2;
-        this.description = "Jest to broń przypominająca "+choose+".";
-        this.attribute = "- W stanie spoczynku broń posiada mnożniki: Cięte";
-        this.additional = "Da się wyczuć od niego wewnętrzne, nostalgiczne ciepło.";
-        this.extra=null;
-    }
-    public void Abnormality(String name, String type, String type2, String rank, String description, String attribute, String additional, String extra)
-    {
-        this.name = name;
-        this.type = type;
-        this.type2 = type2;
-        this.rank = rank;
-        this.description = description;
-        this.attribute = attribute;
-        this.additional = additional;
-        this.extra = extra;
+        String[] list2 = {"Daleth","Zayin","Teth","Kaph","He","Waw","Qoph","Aleph"};
+        String[] list3 = {"Cinder's", "Dark's", "God's" ,"Someone's", "Dreamer's", "Weaver's", "Brutal", "Beta's", "Alpha's", "Prototype ", "Alpha", "Beta", "Omega", "Broken", "Authority's"};
+        String[] list4 = {"ognia", "zimna", "światła", "wiatru", "ciemności", "ziemi", "porządku", "chaosu"};
+        Random random= new Random();
+        String dodatek="";
+        if(random.nextInt(100)<25) {
+            dodatek="Dodatkowo otrzymuje mnożnik "+String.format("%.2f",random.nextDouble(0,4))+" od "+list4[random.nextInt(list4.length)]+".";
+        }
+        String choose = list[random.nextInt(list.length)];
+        String choose2=list2[random.nextInt(list2.length)];
+        String stringToParse = "{\"Nazwa\":\""+list3[random.nextInt(list3.length)]+" "+choose+"\","
+                                +"\"Typ\":\"Weapon EGO\","
+                                +"\"Rodzaj\":\""+choose+"\","
+                                +"\"Stopień\":\""+choose2+"\","
+                                +"\"Opis\":\""+"Jest to broń przypominająca "+choose.toLowerCase()+".\","
+                                +"\"Właściwości\":\"- Broń otrzymuje mnożniki fizyczne: Cięte - "+String.format("%.2f",random.nextDouble(0,2))+"x, Obuchowe - "+String.format("%.2f",random.nextDouble(0,2))+"x Przebijające - "+String.format("%.2f",random.nextDouble(0,2))+"x."+dodatek+"\","
+                                +"\"Inne informacje\":\"Chaotycznie buzuje w dotyku.\"}";
+        JSONParser parser = new JSONParser();
+        try {
+            this.object=(JSONObject) parser.parse(stringToParse);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
     public void setObject(JSONObject object)
     {
