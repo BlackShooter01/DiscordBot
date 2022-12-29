@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="445a43eb-12dc-4e1e-b8a2-280866e07200" name="Changes" comment="Porządkowanie plików i delikatne zabezpieczanie kodu">
+    <list default="true" id="445a43eb-12dc-4e1e-b8a2-280866e07200" name="Changes" comment="Stworzenie komendy automatyzującej tworzenie kanałów dla nowych graczy.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Stats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/BotCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/BotCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/DiscordBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/DiscordBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/ItemEmbbed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/ItemEmbbed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,17 +44,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editor.preferences.completion"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ASUS\Desktop\Java\CreatorOfUniverse\CreatorOfUniverse\src\main\java\me\blackshooter01" />
@@ -172,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672274361177</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Stworzenie komendy automatyzującej tworzenie kanałów dla nowych graczy.">
+      <created>1672280244954</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672280244954</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,10 +209,11 @@
     <MESSAGE value="Uporządkowano trochę kod, określono Parsera jako static, połączenie dwóch oddzielnych Parserów (Abnormality i Ability) w jeden." />
     <MESSAGE value="Naprawiono komendę &quot;Anomalia&quot; i rozszerzono parametry losowości." />
     <MESSAGE value="Porządkowanie plików i delikatne zabezpieczanie kodu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Porządkowanie plików i delikatne zabezpieczanie kodu" />
+    <MESSAGE value="Stworzenie komendy automatyzującej tworzenie kanałów dla nowych graczy." />
+    <option name="LAST_COMMIT_MESSAGE" value="Stworzenie komendy automatyzującej tworzenie kanałów dla nowych graczy." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CreatorOfUniverse$DiscordBot.ic" NAME="DiscordBot Coverage Results" MODIFIED="1672137455390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/CreatorOfUniverse$DiscordBot.ic" NAME="DiscordBot Coverage Results" MODIFIED="1672322521546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>me.blackshooter01.*</FILTER>
     </SUITE>
   </component>

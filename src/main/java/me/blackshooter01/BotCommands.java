@@ -174,6 +174,27 @@ public class BotCommands extends ListenerAdapter {
                 }
             }
         }
+
+        else if (event.getName().equals("statystyki"))
+        {
+            event.deferReply(true).queue();
+            OptionMapping option = event.getOption("member");
+            System.out.print("Komenda Statystyki użyta przez: "+event.getMember().getUser());
+            if(option!=null) { System.out.println(" Z dodatkowym parametrem: "+option.getAsMember().getUser());} else { System.out.println();}
+            if(option!=null)
+            {
+                if(event.getMember().hasPermission(Permission.MANAGE_SERVER))
+                {
+                    event.getHook().sendMessageEmbeds(ItemEmbbed.StatsEmbbed((Stats) Parser.StatsParser(option.getAsMember().getIdLong()))).queue();
+                }
+                else
+                {
+                    event.getHook().sendMessage("Brak wystarczających uprawnień!").queue();
+                }
+            }
+            else { event.getHook().sendMessageEmbeds(ItemEmbbed.StatsEmbbed((Stats) Parser.StatsParser(event.getMember().getIdLong()))).queue();
+            }
+        }
     }
     @Override
     public void onButtonInteraction(ButtonInteractionEvent event)

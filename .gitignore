@@ -44,4 +44,4 @@ src/main/java/me/blackshooter01/config.java
 src/main/resources/archetype-resources/src/main/java/App.java
 src/main/resources/archetype-resources/src/test/java/AppTest.java
 src/main/resources/META-INF/maven/archetype.xml
-resources/ego/
+resources/users/

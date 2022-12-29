@@ -56,4 +56,27 @@ public class ItemEmbbed {
         eb.addField("Witaj na swoim kanale technicznym!","",false);
         return eb.build();
     }
+    public static MessageEmbed StatsEmbbed(Stats stats)
+    {
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setColor(Color.lightGray);
+        eb.setTitle("Statystyki");
+        String dodatek = "";
+        long punkty = stats.getPoints(stats.getFortitude());
+        if(punkty!=0) { dodatek=" ("+punkty+")";}
+        eb.addField("Męstwo"+dodatek,"Krzepa: "+stats.getStrength()+"\nOdporność: "+stats.getEndurance()+"\nRefleks: "+stats.getReflex(),false);
+        punkty = stats.getPoints(stats.getPrudence());
+        dodatek ="";
+        if(punkty!=0) { dodatek=" ("+punkty+")";}
+        eb.addField("Mądrość"+dodatek,"Wiedza: "+stats.getKnowledge()+"\nPrzystosowanie: "+stats.getAdaptation()+"\nIntuicja: "+stats.getIntuition(),false);
+        punkty = stats.getPoints(stats.getTemperance());
+        dodatek ="";
+        if(punkty!=0) { dodatek=" ("+punkty+")";}
+        eb.addField("Roztropność"+dodatek,stats.getSpecialName()+": "+stats.getSpecial()+"\nOpanowanie: "+stats.getComposure()+"\nIntegralność duszy: "+stats.getIntegrity(),false);
+        punkty = stats.getPoints(stats.getJustice());
+        dodatek ="";
+        if(punkty!=0) { dodatek=" ("+punkty+")";}
+        eb.addField("Sprawiedliwość"+dodatek,"Bohaterstwo: "+stats.getHeroism()+"\nHojność: "+stats.getGenerosity()+"\nSerdeczność: "+stats.getKindness(),false);
+        return eb.build();
+    }
 }

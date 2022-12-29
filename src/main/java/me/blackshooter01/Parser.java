@@ -133,6 +133,18 @@ public final class Parser {
             return lista;
         }
     }
+    public static Abnormality StatsParser(long id)
+    {
+        JSONParser jsonParser = new JSONParser();
+        Abnormality abnormality = null;
+        try (FileReader reader = new FileReader(config.anomalie+id+"/stats.json"))
+        {
+            JSONObject obj = (JSONObject) jsonParser.parse(reader);
+            abnormality = parseObject(obj);
+        } catch (ParseException | IOException e) {e.printStackTrace();}
+        return abnormality;
+    }
+
     private static Abnormality parseObject(JSONObject o)
     {
         JSONObject object;
@@ -140,6 +152,8 @@ public final class Parser {
         if(object!=null) { return new Item(object); }
         object = (JSONObject) o.get("ability");
         if(object!=null) { return new Ability(object); }
+        object = (JSONObject) o.get("stats");
+        if(object!=null) { return new Stats(object);}
         return null;
     }
 }

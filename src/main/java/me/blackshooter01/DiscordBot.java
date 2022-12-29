@@ -49,6 +49,8 @@ public class DiscordBot
             phoenixServer.upsertCommand("tablicaego","tablica EGO z przyciskami").queue();
             phoenixServer.upsertCommand("createchannel", "Stworzenie kanału startowego")
                     .addOption(OptionType.MENTIONABLE,"member","osoba").queue();
+            phoenixServer.upsertCommand("statystyki","Sprawdzenie swoich statystyk")
+                    .addOption(OptionType.MENTIONABLE, "member", "inna osoba").queue();
         }
 
     }
