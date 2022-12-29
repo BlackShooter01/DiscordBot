@@ -4,6 +4,7 @@ import java.lang.String;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import org.json.JSONObject;
@@ -46,6 +47,8 @@ public class DiscordBot
                     .addOption(OptionType.STRING,"nazwa","nazwa umiejętności",true).queue();
             phoenixServer.upsertCommand("listaability","Lista posiadanych umiejętności").queue();
             phoenixServer.upsertCommand("tablicaego","tablica EGO z przyciskami").queue();
+            phoenixServer.upsertCommand("createchannel", "Stworzenie kanału startowego")
+                    .addOption(OptionType.MENTIONABLE,"member","osoba").queue();
         }
 
     }

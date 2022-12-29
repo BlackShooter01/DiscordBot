@@ -49,4 +49,11 @@ public class ItemEmbbed {
         eb.setTitle("Nie odnaleziono podanego EGO!");
         return eb.build();
     }
+    public static MessageEmbed WelcomeChannelMessage()
+    {
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setColor(Color.WHITE);
+        eb.addField("Witaj na swoim kanale technicznym!","",false);
+        return eb.build();
+    }
 }

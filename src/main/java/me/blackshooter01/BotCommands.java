@@ -1,6 +1,8 @@
 package me.blackshooter01;
 
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.channel.Channel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -10,7 +12,9 @@ import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.HTreeMap;
 
+import java.nio.channels.Channels;
 import java.util.ArrayList;
+import java.util.EnumSet;
 
 public class BotCommands extends ListenerAdapter {
     @Override
@@ -143,6 +147,32 @@ public class BotCommands extends ListenerAdapter {
             ArrayList<Abnormality> abnormality = Parser.AbilityParser(event.getMember().getIdLong());
             if(abnormality==null) { event.getHook().sendMessage("```Brak Umiejętności!```").queue(); }
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.ListaEGOEmbbed(abnormality)).queue(); }
+        }
+
+        else if (event.getName().equals("createchannel"))
+        {
+            event.deferReply(false).queue();
+            if(!event.getMember().hasPermission(Permission.MANAGE_CHANNEL))
+            {
+                event.reply("Brak wystarczających uprawnień!").queue();
+            }
+            else {
+                try
+                {
+                    OptionMapping option = event.getOption("member");
+                    event.getGuild().getCategoryById("947501728654311424").createTextChannel("zajęta-tożsamość")
+                            .addPermissionOverride(option.getAsMember(), EnumSet.of(Permission.VIEW_CHANNEL,Permission.MESSAGE_SEND,Permission.MESSAGE_ADD_REACTION,Permission.MESSAGE_EMBED_LINKS,Permission.MESSAGE_ATTACH_FILES,Permission.CREATE_PRIVATE_THREADS,Permission.CREATE_PUBLIC_THREADS,Permission.MESSAGE_SEND_IN_THREADS), null)
+                            .addPermissionOverride(event.getGuild().getRoleById("953261314996863037"), EnumSet.of(Permission.VIEW_CHANNEL), null)
+                            .removePermissionOverride(event.getGuild().getRoleById("944593596328317019"))
+                            .addPermissionOverride(event.getGuild().getRoleById("844235271335313428"),null,EnumSet.of(Permission.VIEW_CHANNEL)).complete().sendMessageEmbeds(ItemEmbbed.WelcomeChannelMessage()).queue();
+                    event.getHook().sendMessage("Kanał został stworzony!").queue();
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                    event.getHook().sendMessage("Wystąpił nieznany błąd!").queue();
+                }
+            }
         }
     }
     @Override
