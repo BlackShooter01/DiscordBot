@@ -7,7 +7,6 @@ import org.json.simple.parser.ParseException;
 import java.util.Random;
 
 public abstract class Abnormality {
-    public String name,type,type2,rank,description,attribute,additional,extra;
     protected JSONObject object;
     public Abnormality()
     {
@@ -36,7 +35,7 @@ public abstract class Abnormality {
             e.printStackTrace();
         }
     }
-    public void setObject(JSONObject object)
+    protected void setObject(JSONObject object)
     {
         this.object=object;
     }

@@ -15,7 +15,7 @@ public final class Parser {
     {
         JSONParser jsonParser = new JSONParser();
         Abnormality abnormality = null;
-        try (FileReader reader = new FileReader(config.anomalie+id+"_items.json"))
+        try (FileReader reader = new FileReader(config.anomalie+id+"/items.json"))
         {
             Object obj = jsonParser.parse(reader);
             JSONArray abnormalityList = (JSONArray) obj;
@@ -32,11 +32,11 @@ public final class Parser {
         }
         return abnormality;
     }
-    public static Abnormality ItemParser(long id, int indeks)
+    public static Abnormality ItemParser(long id, Integer indeks)
     {
         JSONParser jsonParser = new JSONParser();
         Abnormality abnormality = null;
-        try (FileReader reader = new FileReader(config.anomalie+id+"_items.json"))
+        try (FileReader reader = new FileReader(config.anomalie+id+"/items.json"))
         {
             Object obj = jsonParser.parse(reader);
             JSONArray abnormalityList = (JSONArray) obj;
@@ -51,7 +51,7 @@ public final class Parser {
     {
         JSONParser jsonParser = new JSONParser();
         ArrayList<Abnormality> lista = new ArrayList<>();
-        try (FileReader reader = new FileReader(config.anomalie+id+"_items.json"))
+        try (FileReader reader = new FileReader(config.anomalie+id+"/items.json"))
         {
             Object obj = jsonParser.parse(reader);
             JSONArray abnormalityList = (JSONArray) obj;
@@ -76,7 +76,7 @@ public final class Parser {
     {
         JSONParser jsonParser = new JSONParser();
         Abnormality abnormality = null;
-        try (FileReader reader = new FileReader(config.anomalie+id+"_abilities.json"))
+        try (FileReader reader = new FileReader(config.anomalie+id+"/abilities.json"))
         {
             Object obj = jsonParser.parse(reader);
             JSONArray abnormalityList = (JSONArray) obj;
@@ -98,7 +98,7 @@ public final class Parser {
     {
         JSONParser jsonParser = new JSONParser();
         Abnormality abnormality = null;
-        try (FileReader reader = new FileReader(config.anomalie+id+"_abilities.json"))
+        try (FileReader reader = new FileReader(config.anomalie+id+"/abilities.json"))
         {
             Object obj = jsonParser.parse(reader);
             JSONArray abnormalityList = (JSONArray) obj;
@@ -113,7 +113,7 @@ public final class Parser {
     {
         JSONParser jsonParser = new JSONParser();
         ArrayList<Abnormality> lista = new ArrayList<>();
-        try (FileReader reader = new FileReader(config.anomalie+id+"_abilities.json"))
+        try (FileReader reader = new FileReader(config.anomalie+id+"/abilities.json"))
         {
             Object obj = jsonParser.parse(reader);
             JSONArray abnormalityList = (JSONArray) obj;
