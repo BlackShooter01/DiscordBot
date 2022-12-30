@@ -4,13 +4,11 @@ import java.lang.String;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
+import net.dv8tion.jda.api.interactions.commands.SlashCommandInteraction;
+import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
 import org.json.JSONObject;
-import org.mapdb.DB;
-import org.mapdb.DBMaker;
-import org.mapdb.HTreeMap;
 
 
 public class DiscordBot
@@ -51,6 +49,10 @@ public class DiscordBot
                     .addOption(OptionType.MENTIONABLE,"member","osoba").queue();
             phoenixServer.upsertCommand("statystyki","Sprawdzenie swoich statystyk")
                     .addOption(OptionType.MENTIONABLE, "member", "inna osoba").queue();
+            phoenixServer.upsertCommand("rozdaj","Rozdaj statystyki")
+                    .addOption(OptionType.STRING,"statystyka","Statystyka", true,true)
+                    .addOption(OptionType.INTEGER, "wartość", "ilość przeznaczanych punktów", true).queue();
+
         }
 
     }

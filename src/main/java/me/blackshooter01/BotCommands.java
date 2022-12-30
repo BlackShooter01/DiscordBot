@@ -2,17 +2,18 @@ package me.blackshooter01;
 
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageEmbed;
-import net.dv8tion.jda.api.entities.channel.Channel;
+import net.dv8tion.jda.api.events.interaction.command.CommandAutoCompleteInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
+import org.jetbrains.annotations.NotNull;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.HTreeMap;
 
-import java.nio.channels.Channels;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.EnumSet;
 
@@ -195,6 +196,23 @@ public class BotCommands extends ListenerAdapter {
             else { event.getHook().sendMessageEmbeds(ItemEmbbed.StatsEmbbed((Stats) Parser.StatsParser(event.getMember().getIdLong()))).queue();
             }
         }
+
+        else if (event.getName().equals("rozdaj"))
+        {
+            event.deferReply(true).queue();
+            String option = event.getOption("statystyka").getAsString();
+            int var = event.getOption("wartość").getAsInt();
+            Stats statystyki = (Stats) Parser.StatsParser(event.getMember().getIdLong());
+            long memberId = event.getMember().getIdLong();
+            switch (option) {
+                case "Krzepa", "Odporność", "Refleks" -> StatsManager.Przydziel(statystyki.getFortitude(),var,option,memberId);
+                case "Wiedza", "Przystosowanie", "Intuicja" -> StatsManager.Przydziel(statystyki.getPrudence(),var,option,memberId);
+                case "Unikalna", "Opanowanie", "Integralność duszy" -> StatsManager.Przydziel(statystyki.getTemperance(),var,option,memberId);
+                case "Bohaterstwo", "Hojność", "Serdeczność" -> StatsManager.Przydziel(statystyki.getJustice(),var,option,memberId);
+                default -> event.getHook().sendMessage("Nieprawidłowy wybór").queue();
+            }
+            event.getHook().sendMessage("Done!").queue();
+        }
     }
     @Override
     public void onButtonInteraction(ButtonInteractionEvent event)
@@ -275,6 +293,14 @@ public class BotCommands extends ListenerAdapter {
             MessageEmbed eb = ItemEmbbed.WeaponEmbbed(abnormality);
             event.getHook().editOriginalEmbeds(eb).queue();
         }
-
+    }
+    @Override
+    public void onCommandAutoCompleteInteraction(@NotNull CommandAutoCompleteInteractionEvent event)
+    {
+        if(event.getFullCommandName().equals("rozdaj"))
+        {
+            String[] choice = new String[] {"Krzepa","Odporność","Refleks","Wiedza","Przystosowanie","Intuicja","Unikalna","Opanowanie","Integralność duszy","Bohaterstwo","Hojność","Serdeczność"};
+            event.replyChoiceStrings(choice).queue();
+        }
     }
 }

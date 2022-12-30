@@ -9,7 +9,7 @@ public class Stats extends Abnormality{
     }
     public long getPoints(JSONObject o)
     {
-        return (long) o.get("Points");
+        return (long) o.get("Punkty");
     }
     public JSONObject getFortitude()
     {
@@ -17,15 +17,15 @@ public class Stats extends Abnormality{
     }
     public long getStrength()
     {
-        return (long) getFortitude().get("Strength");
+        return (long) getFortitude().get("Krzepa");
     }
     public long getEndurance()
     {
-        return (long) getFortitude().get("Endurance");
+        return (long) getFortitude().get("Odporność");
     }
     public long getReflex()
     {
-        return (long) getFortitude().get("Reflex");
+        return (long) getFortitude().get("Refleks");
     }
     public JSONObject getPrudence()
     {
@@ -33,15 +33,15 @@ public class Stats extends Abnormality{
     }
     public long getKnowledge()
     {
-        return (long) getPrudence().get("Knowledge");
+        return (long) getPrudence().get("Wiedza");
     }
     public long getAdaptation()
     {
-        return (long) getPrudence().get("Adaptation");
+        return (long) getPrudence().get("Przystosowanie");
     }
     public long getIntuition()
     {
-        return (long) getPrudence().get("Intuition");
+        return (long) getPrudence().get("Intuicja");
     }
     public JSONObject getTemperance()
     {
@@ -49,19 +49,19 @@ public class Stats extends Abnormality{
     }
     public long getSpecial()
     {
-        return (long) getTemperance().get("Special");
+        return (long) getTemperance().get("Unikalna");
     }
     public String getSpecialName()
     {
-        return (String) getTemperance().get("SpecialName");
+        return (String) getTemperance().get("UnikalnaNazwa");
     }
     public long getComposure()
     {
-        return (long) getTemperance().get("Composure");
+        return (long) getTemperance().get("Opanowanie");
     }
     public long getIntegrity()
     {
-        return (long) getTemperance().get("Integrity");
+        return (long) getTemperance().get("Integralność duszy");
     }
     public JSONObject getJustice()
     {
@@ -69,14 +69,14 @@ public class Stats extends Abnormality{
     }
     public long getHeroism()
     {
-        return (long) getJustice().get("Heroism");
+        return (long) getJustice().get("Bohaterstwo");
     }
     public long getGenerosity()
     {
-        return (long) getJustice().get("Generosity");
+        return (long) getJustice().get("Hojność");
     }
     public long getKindness()
     {
-        return (long) getJustice().get("Kindness");
+        return (long) getJustice().get("Serdeczność");
     }
 }
