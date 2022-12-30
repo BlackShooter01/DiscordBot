@@ -204,14 +204,15 @@ public class BotCommands extends ListenerAdapter {
             int var = event.getOption("wartość").getAsInt();
             Stats statystyki = (Stats) Parser.StatsParser(event.getMember().getIdLong());
             long memberId = event.getMember().getIdLong();
+            String message = "Done!";
             switch (option) {
                 case "Krzepa", "Odporność", "Refleks" -> StatsManager.Przydziel(statystyki.getFortitude(),var,option,memberId);
                 case "Wiedza", "Przystosowanie", "Intuicja" -> StatsManager.Przydziel(statystyki.getPrudence(),var,option,memberId);
                 case "Unikalna", "Opanowanie", "Integralność duszy" -> StatsManager.Przydziel(statystyki.getTemperance(),var,option,memberId);
                 case "Bohaterstwo", "Hojność", "Serdeczność" -> StatsManager.Przydziel(statystyki.getJustice(),var,option,memberId);
-                default -> event.getHook().sendMessage("Nieprawidłowy wybór").queue();
+                default -> message = "Nieprawidłowy wybór!";
             }
-            event.getHook().sendMessage("Done!").queue();
+            event.getHook().sendMessage(message).queue();
         }
     }
     @Override
@@ -300,7 +301,15 @@ public class BotCommands extends ListenerAdapter {
         if(event.getFullCommandName().equals("rozdaj"))
         {
             String[] choice = new String[] {"Krzepa","Odporność","Refleks","Wiedza","Przystosowanie","Intuicja","Unikalna","Opanowanie","Integralność duszy","Bohaterstwo","Hojność","Serdeczność"};
-            event.replyChoiceStrings(choice).queue();
+            ArrayList<String> finalChoice = new ArrayList<>();
+            for(String obj: choice)
+            {
+                if(obj.toLowerCase().contains(event.getFocusedOption().getValue().toLowerCase()))
+                {
+                    finalChoice.add(obj);
+                }
+            }
+            event.replyChoiceStrings(finalChoice).queue();
         }
     }
 }

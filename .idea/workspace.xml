@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="445a43eb-12dc-4e1e-b8a2-280866e07200" name="Changes" comment="Stworzenie podstaw do statystyk, pliki i komendy do podglądania. Parsowanie i wyświetlanie w specjalnym embedzie.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/StatsManager.java" afterDir="false" />
+    <list default="true" id="445a43eb-12dc-4e1e-b8a2-280866e07200" name="Changes" comment="Stworzenie klasy do statystyk i wprowadzenie poprawnej logicznie metody do rozdawania statystyk i zapisania ich w odpowiednich plikach.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/BotCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/BotCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/DiscordBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/DiscordBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Stats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/blackshooter01/Stats.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672341510372</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Stworzenie klasy do statystyk i wprowadzenie poprawnej logicznie metody do rozdawania statystyk i zapisania ich w odpowiednich plikach.">
+      <created>1672414015709</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1672414015709</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,7 +220,8 @@
     <MESSAGE value="Porządkowanie plików i delikatne zabezpieczanie kodu" />
     <MESSAGE value="Stworzenie komendy automatyzującej tworzenie kanałów dla nowych graczy." />
     <MESSAGE value="Stworzenie podstaw do statystyk, pliki i komendy do podglądania. Parsowanie i wyświetlanie w specjalnym embedzie." />
-    <option name="LAST_COMMIT_MESSAGE" value="Stworzenie podstaw do statystyk, pliki i komendy do podglądania. Parsowanie i wyświetlanie w specjalnym embedzie." />
+    <MESSAGE value="Stworzenie klasy do statystyk i wprowadzenie poprawnej logicznie metody do rozdawania statystyk i zapisania ich w odpowiednich plikach." />
+    <option name="LAST_COMMIT_MESSAGE" value="Stworzenie klasy do statystyk i wprowadzenie poprawnej logicznie metody do rozdawania statystyk i zapisania ich w odpowiednich plikach." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CreatorOfUniverse$DiscordBot.ic" NAME="DiscordBot Coverage Results" MODIFIED="1672401830941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
