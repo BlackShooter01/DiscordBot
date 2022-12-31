@@ -46,12 +46,34 @@ public class DiscordBot
             phoenixServer.upsertCommand("listaability","Lista posiadanych umiejętności").queue();
             phoenixServer.upsertCommand("tablicaego","tablica EGO z przyciskami").queue();
             phoenixServer.upsertCommand("createchannel", "Stworzenie kanału startowego")
-                    .addOption(OptionType.MENTIONABLE,"member","osoba").queue();
+                    .addOption(OptionType.MENTIONABLE,"member","Nowy gracz").queue();
             phoenixServer.upsertCommand("statystyki","Sprawdzenie swoich statystyk")
-                    .addOption(OptionType.MENTIONABLE, "member", "inna osoba").queue();
+                    .addOption(OptionType.MENTIONABLE, "member", "Osoba").queue();
             phoenixServer.upsertCommand("rozdaj","Rozdaj statystyki")
                     .addOption(OptionType.STRING,"statystyka","Statystyka", true,true)
-                    .addOption(OptionType.INTEGER, "wartość", "ilość przeznaczanych punktów", true).queue();
+                    .addOption(OptionType.INTEGER, "wartość", "Ilość przeznaczanych punktów", true).queue();
+            phoenixServer.upsertCommand("nadaj","Bezwarunkowe przydzielanie statystyk")
+                    .addOption(OptionType.MENTIONABLE, "member", "Postać",true)
+                    .addOption(OptionType.INTEGER,"fortitude","-",false)
+                    .addOption(OptionType.INTEGER,"krzepa","-",false)
+                    .addOption(OptionType.INTEGER,"odporność","-",false)
+                    .addOption(OptionType.INTEGER,"refleks","-",false)
+                    .addOption(OptionType.INTEGER,"prudence","-",false)
+                    .addOption(OptionType.INTEGER,"wiedza","-",false)
+                    .addOption(OptionType.INTEGER,"przystosowanie","-",false)
+                    .addOption(OptionType.INTEGER,"intuicja","-",false)
+                    .addOption(OptionType.INTEGER,"temperance","-",false)
+                    .addOption(OptionType.INTEGER,"unikalna","-",false)
+                    .addOption(OptionType.INTEGER,"opanowanie","-",false)
+                    .addOption(OptionType.INTEGER,"integrity","-",false)
+                    .addOption(OptionType.INTEGER,"justice","-",false)
+                    .addOption(OptionType.INTEGER,"bohaterstwo","-",false)
+                    .addOption(OptionType.INTEGER,"hojność","-",false)
+                    .addOption(OptionType.INTEGER,"serdeczność","-",false).queue();
+            phoenixServer.upsertCommand("dusza", "Komenda do szybkiego poświęcania integralności duszy")
+                    .addOption(OptionType.MENTIONABLE,"member","Komu poświęcić duszę?",true)
+                    .addOption(OptionType.INTEGER,"liczba","Ile tej duszy poświęcić? Uwaga: Ujemna liczba zwiększy integralność!",true)
+                    .addOption(OptionType.STRING,"opis","Dodatkowe informacje, jakie się chce zawrzeć.",false).queue();
 
         }
 

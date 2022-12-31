@@ -214,6 +214,64 @@ public class BotCommands extends ListenerAdapter {
             }
             event.getHook().sendMessage(message).queue();
         }
+
+        else if(event.getName().equals("nadaj"))
+        {
+            event.deferReply(true).queue();
+            if(event.getMember().hasPermission(Permission.MANAGE_SERVER))
+            {
+                String[] lista = new String[] {"fortitude","krzepa","odporność","refleks","prudence","wiedza","przystosowanie","intuicja","temperance","unikalna","opanowanie","integrity","justice","bohaterstwo","hojność","serdeczność"};
+                long memberId = event.getOption("member").getAsMember().getIdLong();
+                Stats statystyki = (Stats) Parser.StatsParser(event.getMember().getIdLong());
+                String message = "Administrator modyfikuje statystyki: ";
+                for(String o : lista)
+                {
+                    if(event.getOption(o)!=null)
+                    {
+                        int var = event.getOption(o).getAsInt();
+                        o = o.substring(0,1).toUpperCase() + o.substring(1).toLowerCase();
+                        message = message + o +" o "+var+", ";
+                        switch (o) {
+                            case "Krzepa", "Odporność", "Refleks" -> StatsManager.Nadaj(statystyki.getFortitude(),var,o,memberId);
+                            case "Wiedza", "Przystosowanie", "Intuicja" -> StatsManager.Nadaj(statystyki.getPrudence(),var,o,memberId);
+                            case "Unikalna", "Opanowanie" -> StatsManager.Nadaj(statystyki.getTemperance(),var,o,memberId);
+                            case "Integrity" -> StatsManager.Nadaj(statystyki.getTemperance(),var,"Integralność duszy",memberId);
+                            case "Bohaterstwo", "Hojność", "Serdeczność" -> StatsManager.Nadaj(statystyki.getJustice(),var,o,memberId);
+                            case "Fortitude" -> StatsManager.Nadaj(statystyki.getFortitude(),var,"Punkty",memberId);
+                            case "Prudence" -> StatsManager.Nadaj(statystyki.getPrudence(),var,"Punkty",memberId);
+                            case "Temperance" -> StatsManager.Nadaj(statystyki.getTemperance(),var,"Punkty",memberId);
+                            case "Justice" -> StatsManager.Nadaj(statystyki.getJustice(),var,"Punkty",memberId);
+                            default -> System.out.println("Nieprawidłowy string? Error?");
+                        }
+                    }
+                }
+                StatsManager.Logi(message, memberId);
+                event.getHook().sendMessage("Wykonane!").queue();
+            }
+            else
+            {
+                event.getHook().sendMessage("Brak wystarczających uprawnień!").queue();
+            }
+        }
+
+        else if(event.getName().equals("dusza"))
+        {
+            event.deferReply(true).queue();
+            if(event.getMember().hasPermission(Permission.MANAGE_SERVER))
+            {
+                long memberId = event.getOption("member").getAsMember().getIdLong();
+                Stats statystyki = (Stats) Parser.StatsParser(memberId);
+                int var = event.getOption("liczba").getAsInt();
+                StatsManager.Nadaj(statystyki.getTemperance(),-var,"Integralność duszy",memberId);
+                String informacje = event.getOption("opis").getAsString();
+                StatsManager.Logi("Poświęcenie integralności duszy ("+var+") "+informacje, memberId);
+                event.getHook().sendMessage("Wykonane!").queue();
+            }
+            else
+            {
+                event.getHook().sendMessage("Brak wystarczających uprawnień!").queue();
+            }
+        }
     }
     @Override
     public void onButtonInteraction(ButtonInteractionEvent event)
